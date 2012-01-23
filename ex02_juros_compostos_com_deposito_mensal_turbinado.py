@@ -13,7 +13,7 @@ print '+-----------+--------------+'
 print '|    Mes    |   Montante   |'
 print '+-----------+--------------+'
 for mes in range(meses):
-    mes_formatado = nome_meses[mes].ljust(9)
+    mes_formatado = nome_meses[mes % 12].ljust(9)
     montante_formatado = 'R$ {:8,.2f}'.format(montante)
     montante_formatado = montante_formatado.replace(',', '|').replace('.', ',')
     montante_formatado = montante_formatado.replace('|', '.')
