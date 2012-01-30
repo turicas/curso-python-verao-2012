@@ -1,0 +1,189 @@
+<html><head>
+<title>Avaliação Python Verão 2012</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf8" />
+</head><body>
+<h1>Avaliação Python - Curso de Verão 2012 EMAp/FGV</h1>
+
+<h2>Introdução</h2>
+
+<p>Essa avaliação é dividida em 3 exercícios, sendo a resolução de cada um
+independente do outro. Em todos eles você precisará criar uma função que
+recebe e retorna objetos. Apesar dessas funções poderem ser utilizadas uma
+a partir da outra (uma recebendo o resultado da outra), as resoluções delas
+são independentes, ou seja, você terá todas as instruções para fazer o
+exercício 3, mesmo não tendo feito o 2.</p>
+
+<p>Você tem acesso aos enunciados, aos testes para cada exercício e também,
+caso tenha participado do Coding Dojo do dia 27/01, a algumas dicas, que
+devem ser decodificadas utilizando a cifra de César com passo 13 (rot-13).
+Os enunciados estão contidos em <em>docstrings</em> no arquivo <code>resolucao.py</code>,
+que deve ser utilizado como base para a resolução dessa avaliação. As dicas
+codificadas estão contidas apenas no arquivo <code>README.markdown</code>. Você deve
+colocar seu nome na variável <code>nome</code> (que está após a <em>docstring</em> do módulo
+<code>resolucao.py</code>).</p>
+
+<p>Cada exercício possui um arquivo de teste associado, cujo nome é
+<code>test_nome_da_funcao_a_ser_criada.py</code>. Para verificar se sua implementação
+da função está funcionando como esperado, apenas rode o arquivo de testes
+com o comando <code>python nome_do_arquivo.py</code>.</p>
+
+<p>Antes de começar você precisa entender o que é um arquivo no formato CSV
+(<em>comma-separated values</em>). Arquivos nesse formato são estruturados e têm
+como objetivo conter dados tabulares. Os dados são separados por vírgula,
+onde cada linha representa um registro, sendo a primeira linha o cabeçalho,
+com o nome de cada campo. Pense, por exemplo, na tabela que está no arquivo
+<code>exemplos/planilha.png</code> (anexado a essa avaliação). Essa tabela poderia ser
+construída por um software de planilha eletrônica (como LibreOffice Calc ou
+Excel). Nesses softwares existe a opção de salvá-la em formato CSV e,
+quando fazemos isso, o resultado será um arquivo com o conteúdo abaixo:</p>
+
+<pre><code>uf,ano,processos
+RJ,2007,67282
+RS,2007,94445
+SP,2007,134511
+RJ,2009,23080
+RS,2009,30897
+SP,2009,44668
+</code></pre>
+
+<p>Boas práticas de programação, como nomear semanticamente as variáveis e
+utilizar o estilo de código definido na PEP8 lhe darão pontos extras.</p>
+
+<p>Happy hacking! :-)</p>
+
+<h2>Exercício 1: Ler Arquivo CSV</h2>
+
+<p>Essa função deve receber um único parâmetro: o nome de um arquivo CSV a
+ser lido e processado.</p>
+
+<p>Como Python já vem com as "baterias incluídas", existe um módulo chamado
+<code>csv</code> - importe-o e leia sua documentação (<code>help(csv)</code>) para saber como
+utilizá-lo. Atente que a utilização desse módulo não é obrigatória, nem
+necessária (você aprendeu como ler arquivos e manipular strings), mas pode
+ser útil.</p>
+
+<p>Essa função deve retornar uma lista de listas, onde cada uma das listas
+internas deve representar um registro do arquivo CSV. O cabeçalho deve ser
+omitido. Para simplificar, essa função só precisa ler arquivos CSV no
+formato exemplificado na introdução dessa avaliação, sendo:</p>
+
+<ul>
+<li>O primeiro campo uma string (uf)</li>
+<li>O segundo campo um inteiro (ano)</li>
+<li>O terceiro campo um inteiro (processos)</li>
+</ul>
+
+<p>Assim, um exemplo de registro seria:</p>
+
+<pre><code>['RJ', 2007, 67282]
+</code></pre>
+
+<p>Caso o arquivo CSV exemplificado na introdução fosse salvo em <code>dados.csv</code>,
+ao chamarmos <code>le_csv('dados.csv')</code> deveríamos receber como retorno a
+seguinte lista:</p>
+
+<pre><code>[['RJ', 2007, 67282],
+ ['RS', 2007, 94445],
+ ['SP', 2007, 134511],
+ ['RJ', 2009, 23080],
+ ['RS', 2009, 30897],
+ ['SP', 2009, 44668]]
+</code></pre>
+
+<p>O arquivo CSV recebido pode ter um número qualquer de linhas, mas sempre
+terá essas 3 colunas (uf, ano e processos). Ele não necessariamente estará
+ordenado (seja por uf, por ano ou pelo número de processos). Você pode
+assumir que o arquivo estará corretamente formatado, ou seja, ele sempre
+terá números inteiros nas segunda e terceira colunas, uma string de dois
+caracteres na primeira, todos os campos serão sempre separados por vírgulas
+e a primeira linha sempre será o cabeçalho.</p>
+
+<p>Os testes para esse exercício estão no arquivo <code>test_le_csv.py</code>.</p>
+
+<p><strong>Dicas:</strong></p>
+
+<ul>
+<li>N shaçãb <code>ernqre</code> qrageb qb zóqhyb <code>pfi</code> é dhrz snm b genonyub qr yre bf
+ertvfgebf pbagvqbf ab nedhvib. Ryn erpror pbzb cneâzrgeb hz bowrgb qb
+gvcb nedhvib (dhr é ergbeanqb cryn shaçãb <code>bcra</code>) r ergbean hz bowrgb
+vgreáiry (dhr cbqr fre vgrenqb ngeniéf qr hz <code>sbe</code>), ergbeanaqb hz
+ertvfgeb n pnqn vgrençãb. Irwn <code>uryc(pfi.ernqre)</code> cnen znvf vasbeznçõrf.</li>
+<li>Cnen pbairegre hzn fgevat rz vagrveb hgvyvmr n shaçãb <code>vag</code>, cbe rkrzcyb:
+<code>vag(42)</code> ergbean b vagrveb <code>42</code>.</li>
+</ul>
+
+<h2>Exercício 2: Agregar Valores</h2>
+
+<p>Essa função deve se chamar <code>agrega_valores</code>, receberá uma lista
+como a retornada pela função <code>le_csv</code> e retornará um dicionário, contendo
+o somatório de processos por estado (independente do ano). Por exemplo:
+caso a função <code>agrega_valores</code> receba como parâmetro a lista retornada no
+exemplo do Exercício 1, ela deverá retornar o seguinte dicionário:</p>
+
+<pre><code>{'RJ': 90362, 'RS': 125342, 'SP': 179179}
+</code></pre>
+
+<p>Onde cada chave representa um "uf" e o valor de cada chave é o somatório de
+processos para aquele "uf". Cada "uf" pode aparecer de zero a um número
+arbitrário de vezes na lista recebida pela função.</p>
+
+<p>Os testes para esse exercício estão no arquivo <code>test_agrega_valores.py</code>.</p>
+
+<p><strong>Dicas:</strong></p>
+
+<ul>
+<li>Cnen crepbeere n yvfgn qr ertvfgebf, hgvyvmr <code>sbe ertvfgeb va yvfgn:</code>.</li>
+<li>Pnqn ineváiry <code>ertvfgeb</code> qn qvpn npvzn qrireá fre hzn yvfgn pbz bf
+inyberf qb ertvfgeb, fraqb: <code>ertvfgeb[0]</code> b hs, <code>ertvfgeb[1]</code> b nab r
+<code>ertvfgeb[2]</code> n dhnagvqnqr qr cebprffbf.</li>
+<li>Cnen irevsvpne fr hz qvpvbaáevb cbffhv hzn qrgrezvanqn punir, onfgn
+hgvyvmne b bcrenqbe <code>va</code>, cbe rkrzcyb: <code>vs punir va qvpvbanevb:</code>.</li>
+</ul>
+
+<h2>Exercício 3: Plotar Gráfico</h2>
+
+<p>Essa função deve se chamar <code>plota_grafico</code> e receberá dois parâmetros:
+um dicionário no mesmo formato do que deve ser retornado pela função
+<code>agrega_valores</code> e o nome de um arquivo. Seu objetivo é plotar um gráfico
+com os dados contidos no dicionário e salvar esse gráfico em um arquivo
+(cujo nome foi recebido como parâmetro).</p>
+
+<p>Os UFs (SP, RJ etc.) devem ficar no eixo x do gráfico e o número de
+processos, no eixo y. Por exemplo, o código:</p>
+
+<pre><code>plota_grafico({'SP': 200, 'RJ': 100, 'RS': 150, 'MG': 125}, 'ex3.png')
+</code></pre>
+
+<p>deve gerar um gráfico igual ao que está disponível em <code>exemplos/ex3.png</code>.</p>
+
+<p>Você deverá utilziar o arquivo <code>exemplos/grafico.py</code> como base para essa
+função - ele utiliza os métodos <code>set_xticks</code> e <code>set_xticklabels</code> para
+definir o texto do eixo x e cria uma imagem em tamanho razoavelmente
+grande, que é necessária para esse gráfico (já que temos 27 UFs).
+Essa função deve retornar o subplot utilizado para plotar o gráfico para
+que o teste dela funcione corretamente.</p>
+
+<p>Os testes para esse exercício estão no arquivo <code>test_plota_grafico.py</code>.</p>
+
+<p><strong>Dicas:</strong></p>
+
+<ul>
+<li>Ibpê cerpvfneá genafsbezne b qvpvbaáevb erprovqb rz qhnf yvfgnf (hzn pbz
+bf inyberf qr k r bhgen pbz bf inyberf qr l).</li>
+<li>Cnen crepbeere punirf r inyberf qr hz qvpvbaáevb, hgvyvmr b póqvtb:
+<code>sbe punir, inybe va qvpvbanevb.vgrevgrzf():</code>.</li>
+</ul>
+
+<h2>Exercício 4: Bônus</h2>
+
+<p>Caso você tenha completado todos os exercícios acima e todos os testes
+estejam passando, rode o script <code>test_bonus.py</code>. Esse script irá chamar
+as funções que você criou e o arquivo <code>exemplos/processos.csv</code> para criar
+uma imagem chamada <code>processos-stf.png</code>, que é um gráfico contendo o número
+de processos por unidade federativa do Brasil abertos no Supremo Tribunal
+Federal de 2000 a 2009.</p>
+
+<p><strong>Dicas:</strong></p>
+
+<p>Fr ibpê purtbh ngé ndhv, aãb cerpvfn qr znvf qvpnf!</p>
+</body></html>

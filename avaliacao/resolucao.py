@@ -13,7 +13,9 @@ caso tenha participado do Coding Dojo do dia 27/01, a algumas dicas, que
 devem ser decodificadas utilizando a cifra de César com passo 13 (rot-13).
 Os enunciados estão contidos em _docstrings_ no arquivo `resolucao.py`,
 que deve ser utilizado como base para a resolução dessa avaliação. As dicas
-codificadas estão contidas apenas no arquivo `README.markdown`.
+codificadas estão contidas apenas no arquivo `README.markdown`. Você deve
+colocar seu nome na variável `nome` (que está após a _docstring_ do módulo
+`resolucao.py`).
 
 Cada exercício possui um arquivo de teste associado, cujo nome é
 `test_nome_da_funcao_a_ser_criada.py`. Para verificar se sua implementação
@@ -30,7 +32,7 @@ construída por um software de planilha eletrônica (como LibreOffice Calc ou
 Excel). Nesses softwares existe a opção de salvá-la em formato CSV e,
 quando fazemos isso, o resultado será um arquivo com o conteúdo abaixo:
 
-    uf,processos,ano
+    uf,ano,processos
     RJ,2007,67282
     RS,2007,94445
     SP,2007,134511
@@ -70,12 +72,12 @@ def le_csv():
     ao chamarmos `le_csv('dados.csv')` deveríamos receber como retorno a
     seguinte lista:
 
-        [['RJ', 2007, 67282]
-         ['RS', 2007, 94445]
-         ['SP', 2007, 134511]
-         ['RJ', 2009, 23080]
-         ['RS', 2009, 30897]
-         ['SP', 2009, 44668]
+        [['RJ', 2007, 67282],
+         ['RS', 2007, 94445],
+         ['SP', 2007, 134511],
+         ['RJ', 2009, 23080],
+         ['RS', 2009, 30897],
+         ['SP', 2009, 44668]]
 
     O arquivo CSV recebido pode ter um número qualquer de linhas, mas sempre
     terá essas 3 colunas (uf, ano e processos). Ele não necessariamente estará
