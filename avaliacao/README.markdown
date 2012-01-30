@@ -22,7 +22,7 @@ colocar seu nome na variável `nome` (que está após a _docstring_ do módulo
 Cada exercício possui um arquivo de teste associado, cujo nome é
 `test_nome_da_funcao_a_ser_criada.py`. Para verificar se sua implementação
 da função está funcionando como esperado, apenas rode o arquivo de testes
-com o comando `python nome_do_arquivo.py`.
+com o comando `nosetests nome_do_arquivo.py`.
 
 Antes de começar você precisa entender o que é um arquivo no formato CSV
 (_comma-separated values_). Arquivos nesse formato são estruturados e têm
