@@ -45,6 +45,8 @@ utilizar o estilo de código definido na PEP8 lhe darão pontos extras.
 
 Happy hacking! :-)"""
 
+nome = "Seu Nome Aqui"
+
 def le_csv():
     """Essa função deve receber um único parâmetro: o nome de um arquivo CSV a
     ser lido e processado.
